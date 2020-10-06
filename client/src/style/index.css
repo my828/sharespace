@@ -1765,10 +1765,11 @@ section {
 
 .navbar {
   display: none;
-  margin: 0;
+  margin: auto 0;
   padding: 0px 20px 0px 20px;
   border-bottom: 0.25px solid #d3dbee;
 }
+
 .navbar h1 {
   color: #7e95cd;
 }
@@ -1938,12 +1939,7 @@ section {
   .navbar img {
     max-height: 80px;
   }
-  .navbar #nav-buttons {
-    margin-left: auto;
-  }
-  .navbar #nav-buttons button {
-    margin: 0px 5px 0px 5px;
-  }
+  
   .navbar .nav-item {
     margin: 0px 25px 0px 10px;
     flex-grow: 1;
