@@ -35,7 +35,7 @@ const NavigationNonAuth = () => (
       style={{ height: "5.5rem" }}
     >
       <div class="d-flex nav-content">
-          <Link to="/">
+          <Link to="/sharespace">
             <img src={logo} class="logo" alt="logo" />
           </Link>
           <ul class="navbar-nav d-flex justify-content-start align-items-center">
