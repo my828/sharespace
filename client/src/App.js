@@ -1,39 +1,42 @@
-import React, { Component } from 'react';
-import './style/index.css';
-import Nav from './Main/Nav'
-import SignUp from './Main/SignUp'
-import Stay from './Stay'
-import Landing from './Main/landing'
-import Footer from './Main/Footer'
-import AboutUs from './Main/AboutUs'
-import OurTool from './Main/OurTool'
-import CurrentBookings from './Advocate/CurrentBookings'
-import SignIn from './Main/SignIn'
-import Calendar from './Advocate/AdvoCalendar'
-import Situation from './Main/Situation'
-import { withAuthentication } from './Sessions';
-import SearchBooking from './Advocate/SearchBooking';
-import PasswordForgetPage from './PassForget';
-import Admin from './Admin';
-import SignUpHost from './SignUpHost';
-import HostDash from './Host/HostDash';
-import CreateProfile from './Host/CreateProfile'
-import {BrowserRouter as Router, Switch, Redirect, Route} from "react-router-dom";
-import MyListing from './Host/Listing'
-import { listing } from './filter';
+import React, { Component } from "react";
+// import './style/index.css';
+import Nav from "./Main/Nav/Nav";
+import SignUp from "./Main/SignUp";
+import Stay from "./Stay";
+import Landing from "./Main/landing";
+import Footer from "./Main/Footer";
+import AboutUs from "./Main/AboutUs";
+import OurTool from "./Main/OurTool";
+import CurrentBookings from "./Advocate/CurrentBookings";
+import SignIn from "./Main/SignIn";
+import Calendar from "./Advocate/AdvoCalendar";
+import Situation from "./Main/Situation";
+import { withAuthentication } from "./Sessions";
+import SearchBooking from "./Advocate/SearchBooking";
+import PasswordForgetPage from "./PassForget";
+import Admin from "./Admin";
+import SignUpHost from "./SignUpHost";
+import HostDash from "./Host/HostDash";
+import CreateProfile from "./Host/CreateProfile";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+  Route,
+} from "react-router-dom";
+import MyListing from "./Host/Listing";
+import { listing } from "./filter";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
       currentUser: {
         type: "",
         uid: "",
         firstName: "Mary",
         lastName: "Huibregtse",
-        email: "mary@gmail.com"
-
+        email: "mary@gmail.com",
       },
       // profile: {
       //   phone: '1234567890',
@@ -57,47 +60,45 @@ class App extends Component {
       //     zip: "98102",
       //     availability: [],
       //     currentBookings: [],
-      //     pendingBookings: [],    
+      //     pendingBookings: [],
       //   }],
       //   listingIDs: ['-LgQLVKa-hPfhrupdcUB'],
-      //   story: 'none given',     
+      //   story: 'none given',
       // }
       profile: {
-        phone: '',
-        gender: 'non given',
+        phone: "",
+        gender: "non given",
         languages: [],
         ethnicities: [],
         religion: [],
         listings: [],
         listingIDs: [],
-        story: 'none given',     
-      }
-
-      
-    }
+        story: "none given",
+      },
+    };
   }
 
   deleteAvailability = (id, index) => {
-    let l = this.state.profile.listings
-    for (let i = 0; i < l.length; i ++) {
-      let obj = l[i]
-      if(obj.id == id) {
-        l[i].availability.splice(index, 1)
-        console.log(l[i].availability)
+    let l = this.state.profile.listings;
+    for (let i = 0; i < l.length; i++) {
+      let obj = l[i];
+      if (obj.id == id) {
+        l[i].availability.splice(index, 1);
+        console.log(l[i].availability);
       }
     }
-  }
+  };
   updateAvailability = (id, value) => {
-    let l = this.state.profile.listings
-    for (let i = 0; i < l.length; i ++) {
-      let obj = l[i]
-      if(obj.id == id) {
-        l[i].availability.push(value)
+    let l = this.state.profile.listings;
+    for (let i = 0; i < l.length; i++) {
+      let obj = l[i];
+      if (obj.id == id) {
+        l[i].availability.push(value);
       }
     }
-    console.log('AVAILABILITY!!!!!!')
-    console.log(this.state)
-  }
+    console.log("AVAILABILITY!!!!!!");
+    console.log(this.state);
+  };
 
   updateUser = (value) => {
     this.setState({
@@ -106,35 +107,35 @@ class App extends Component {
         uid: value.uid,
         firstName: value.firstName,
         lastName: value.lastName,
-        email: value.email
-      }
-
-    }) 
-    console.log(this.state.currentUser)
-  }
+        email: value.email,
+      },
+    });
+    console.log(this.state.currentUser);
+  };
   updateListing = (value) => {
-    if (this.state.profile.listings == undefined || this.state.profile.listingIDs === undefined) {
+    if (
+      this.state.profile.listings == undefined ||
+      this.state.profile.listingIDs === undefined
+    ) {
       this.setState({
         profile: {
           listings: [value],
-          listingIDs: [value.id]
-        }         
-      })
+          listingIDs: [value.id],
+        },
+      });
     } else {
-      this.state.profile.listings.push(value)
-      this.state.profile.listingIDs.push(value.id)
+      this.state.profile.listings.push(value);
+      this.state.profile.listingIDs.push(value.id);
     }
 
-    console.log(this.state)
-  }
+    console.log(this.state);
+  };
 
   updateType = (value) => {
     this.setState({
-      userType: value
-    })
-  }
-
-
+      userType: value,
+    });
+  };
 
   updateProfile = (value) => {
     this.setState({
@@ -146,10 +147,10 @@ class App extends Component {
         religion: value.religion,
         listings: value.listings,
         story: value.story,
-        haveListing: value.haveListing      
+        haveListing: value.haveListing,
       },
-    })
-  }
+    });
+  };
 
   render() {
     return (
@@ -157,31 +158,62 @@ class App extends Component {
         <Router>
           <div>
             <Nav />
-              <Switch>
-                  <Route exact path="/" component={Landing} />
-                  <Route path="/signup" render={(props) => <SignUp {...props} updateUser={this.updateUser}/>} />
-                  <Route path="/stay" component={Stay} />
-                  <Route path="/aboutus" component={AboutUs} />
-                  <Route path="/ourtool" component={OurTool} />
-                  <Route path="/Admin" component={Admin} />
-                  <Route path="/signin" component={SignIn} />
-                  <Route path="/situation" component={Situation} />
-                  <Route path="/PassForget" component={PasswordForgetPage} />
-                  <Route path="/calendar" component={Calendar} />
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route
+                path="/signup"
+                render={(props) => (
+                  <SignUp {...props} updateUser={this.updateUser} />
+                )}
+              />
+              <Route path="/stay" component={Stay} />
+              <Route path="/aboutus" component={AboutUs} />
+              <Route path="/ourtool" component={OurTool} />
+              <Route path="/Admin" component={Admin} />
+              <Route path="/signin" component={SignIn} />
+              <Route path="/situation" component={Situation} />
+              <Route path="/PassForget" component={PasswordForgetPage} />
+              <Route path="/calendar" component={Calendar} />
 
-                  {/* Advocate */}
-                  <Route path="/advocate/currentbookings" component={CurrentBookings} />
-                  <Route path="/advocate/searchbookings" component={SearchBooking} />
+              {/* Advocate */}
+              <Route
+                path="/advocate/currentbookings"
+                component={CurrentBookings}
+              />
+              <Route
+                path="/advocate/searchbookings"
+                component={SearchBooking}
+              />
 
-                  {/* Host */}
-                  <Route path="/host/createprofile" render={(props) => <CreateProfile {...props} updateProfile={this.updateProfile} user={this.state.currentUser}/>} />
-                  {/* <Route path="/listing" render={(props) => <MyListing {...props} updateListing={this.updateListing} user={this.state.currentUser}/>} /> */}
+              {/* Host */}
+              <Route
+                path="/host/createprofile"
+                render={(props) => (
+                  <CreateProfile
+                    {...props}
+                    updateProfile={this.updateProfile}
+                    user={this.state.currentUser}
+                  />
+                )}
+              />
+              {/* <Route path="/listing" render={(props) => <MyListing {...props} updateListing={this.updateListing} user={this.state.currentUser}/>} /> */}
 
-                  {/* <Route path="/hostdash" component={HostDash} /> */}
-                  <Route path="/host/hostdash" render={(props) => <HostDash {...props} updateListing= {this.updateListing} currentUser = {this.state.currentUser} profile={this.state.profile} updateAvailability={this.updateAvailability} deleteAvailability={this.deleteAvailability}/> }/>    
-
-              </Switch>
-          </div>    
+              {/* <Route path="/hostdash" component={HostDash} /> */}
+              <Route
+                path="/host/hostdash"
+                render={(props) => (
+                  <HostDash
+                    {...props}
+                    updateListing={this.updateListing}
+                    currentUser={this.state.currentUser}
+                    profile={this.state.profile}
+                    updateAvailability={this.updateAvailability}
+                    deleteAvailability={this.deleteAvailability}
+                  />
+                )}
+              />
+            </Switch>
+          </div>
         </Router>
         <Footer />
       </div>
