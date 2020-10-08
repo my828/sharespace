@@ -11,7 +11,7 @@ body {
 }
 
 section {
-    margin: 0 80px 0 80px; 
+    // margin: 0 80px 0 80px; 
 }
 
 .leave-site {
@@ -33,50 +33,7 @@ section {
 }
 
 
-#section-1 {
-    color: $dark-blue;
-    text-align: left;
-    img {
-        //margin-top: 30px;
-        margin-bottom: 30px;
-        width: 100%;
-    }
 
-    .logo-img {
-        max-width: 200px;
-        padding: 0 0 10px 0;
-        margin: 0;
-    }
-}
-
-#section-2 {
-    text-align: center;
-    img {
-        width: 100%;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-}
-
-#section-3 {
-    .col.card {
-        padding-right: 0px;
-        padding-left: 0px;
-        //margin: 0px 10px 0px 0px;
-        border: none;
-    
-        .card-body {
-            text-align: left;
-            padding : 0px;
-            margin: 0px 30px 0px 0px;
-    
-            .card-title {
-                font-size: 20pt;
-                color: $dark-blue;
-            }
-        }
-    }
-}
 
 #donate, #sign-up {
     display: none;
@@ -98,20 +55,6 @@ section {
     margin: 0;
 }
 
-#section-4 {
-    h5 {
-        margin: 0;
-    }
-
-    p {
-        margin: 0;
-    }
-
-    #position {
-        color: $teal;
-    }
-
-}
 
 #meet-the-team {
     line-height: 1;
