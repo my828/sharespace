@@ -2,7 +2,7 @@
   "name": "capstone2019",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sburd36.github.io/sharespace",
+  "homepage": "https://my828.github.io/sharespace/",
   "dependencies": {
     "@dashboardcode/bsmultiselect": "^0.2.20",
     "@fullcalendar/core": "^4.0.2",
@@ -30,7 +30,9 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "^3.0.0",
     "react-select": "^2.4.2",
+    "react-slick": "^0.27.11",
     "recompose": "^0.30.0",
+    "slick-carousel": "^1.8.1",
     "typescript": "^3.4.5"
   },
   "scripts": {

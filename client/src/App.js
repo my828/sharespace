@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Nav from "./Main/Nav/Nav";
 import SignUp from "./Main/SignUp";
 import Stay from "./Stay";
-import Landing from "./Main/landing";
+import Landing from "./Main/Landing/landing";
 import Footer from "./Main/Footer";
 import AboutUs from "./Main/AboutUs";
 import OurTool from "./Main/OurTool";
@@ -159,7 +159,7 @@ class App extends Component {
           <div>
             <Nav />
             <Switch>
-              <Route exact path="/" component={Landing} />
+              <Route exact path="/sharespace" component={Landing} />
               <Route
                 path="/signup"
                 render={(props) => (
