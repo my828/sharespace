@@ -18,12 +18,12 @@ section {
     visibility: hidden;
 }
 
-.logo-mobile {
-    img {
-        max-width: 150px;
-        margin-top: 30px;
-    }
-}
+// .logo-mobile {
+//     img {
+//         max-width: 150px;
+//         margin-top: 30px;
+//     }
+// }
 
 
 
@@ -43,11 +43,11 @@ section {
     display: none;
 }
 
-.logo-mobile {
-    display: inline;
-    text-align: center; 
-    color: $teal;
-}
+// .logo-mobile {
+//     display: inline;
+//     text-align: center; 
+//     color: $teal;
+// }
 
 .row-cards {
     display: flex;
@@ -94,13 +94,7 @@ section {
     }
 }
 
-#section-5 {
-    .btn {
-        margin-top: 15px;
-        font-size: 20px;
-        padding: 15px 20px 10px 20px;
-    }
-}
+
 
 #section-6 {
     padding: 50px 0 100px 0px;
@@ -144,9 +138,9 @@ section {
         max-width: 150px;
     }
 
-    .logo-mobile {
-        display: none;
-    }
+    // .logo-mobile {
+    //     display: none;
+    // }
 
     .leave-site {
         visibility: visible;

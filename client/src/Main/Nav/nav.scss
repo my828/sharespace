@@ -1,21 +1,51 @@
-@import "../../style/breakpoints";
 @import "../../style/colors";
+@import "../../style/breakpoints";
+
+.logo {
+  max-width: 120px;
+}
 
 .navbar {
-  display: none;
-  padding: 0px 20px 0px 20px;
+  margin: 0 auto;
+  padding: 20px 40px 10px 40px;
+  background-color: white;
   h1 {
     color: $teal;
   }
-  border-bottom: 0.25px solid $baby-blue;
+  max-width: 1600px;
+  #navbarContent {
+    width: 1500px;
+    b {
+      font-size: 20px;
+    }
+  }
+  #nav-buttons {
+    margin-left: auto;
+
+    button {
+      margin: 0px 5px 0px 5px;
+    }
+  }
+
+  .nav-link {
+    color: #7e95cd !important;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 15pt;
+    font-weight: 300;
+    margin: 0px 25px 0px 10px;
+    flex-grow: 1;
+    text-align: center;
+  }
+  .nav-link:hover {
+    color: #fe8b6b;
+  }
+  // border-bottom: 0.25px solid $baby-blue;
 }
 
-.nav-content {
-  margin: 0 auto;
-}
 #log-in {
   font-size: 1em;
 }
+
 a {
   color: $teal;
   font-family: "Source Sans Pro", sans-serif;
@@ -23,39 +53,27 @@ a {
   &:hover {
     color: $medium-orange;
     text-decoration: none;
+    .nav-link {
+      color: $medium-orange;
+    }
+  }
+}
+
+@media (min-width: $breakpoint_phone) {
+  b {
+    font-size: 15px;
   }
 }
 
 @media (min-width: $breakpoint_desktop) {
   .navbar {
-    display: flex;
-    flex-wrap: nowrap;
-    background-color: white;
-    font-size: 1.4em;
-
-    img {
-      max-height: 80px;
-    }
-    .nav-content {
-      width: 1500px;
-    }
-    #nav-buttons {
-      margin-left: auto;
-
-      button {
-        margin: 0px 5px 0px 5px;
-      }
-    }
-
-    .nav-item {
-      margin: 0px 25px 0px 10px;
-      flex-grow: 1;
-    }
+    font-size: 25px;
   }
-
+  .logo {
+    margin: 15px;
+    max-width: 130px;
+  }
   .navbar-nav {
-    justify-content: space-between;
-    flex-grow: 1;
     margin: 0px 40px 0px 40px;
   }
 }
