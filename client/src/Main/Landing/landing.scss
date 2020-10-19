@@ -1,14 +1,8 @@
 @import "../../style/colors";
 @import "../../style/breakpoints";
-// section {
-//   margin-top: 30px;
-// }
+
 p {
   font-size: 18px;
-}
-#landing-page-content {
-  margin: 0px auto;
-  max-width: 1600px;
 }
 
 #section-1 {
@@ -29,9 +23,6 @@ p {
 #section-2 {
   #graphic-2 {
     text-align: center;
-  }
-  img {
-    width: 80%;
   }
 }
 
@@ -105,13 +96,6 @@ p {
   }
 }
 #section-5 {
-  background-color: #f6c7b6;
-  margin: auto;
-  text-align: left;
-  color: white;
-  background: #f6c7b6;
-  padding: 120px 100px 100px 100px;
-  font-weight: 600;
   .btn {
     margin: 10px auto;
     font-size: 20px;
@@ -123,8 +107,14 @@ p {
   }
 }
 @media (max-width: $breakpoint_tablet) {
+  p {
+    font-size: 16px;
+  }
   section {
-    margin: 40px 30px;
+    margin: 60px 30px;
+  }
+  h4 {
+    text-align: center;
   }
   #how-you-can-help {
     img {
@@ -162,13 +152,11 @@ p {
     }
   }
 }
-@media (min-width: $breakpoint_phone) {
-  section {
-    margin: 20px 30px;
-  }
-}
 
 @media (min-width: $breakpoint_tablet) {
+  section {
+    margin: 50px 40px;
+  }
   #who-we-work-with {
     .contents {
       grid-template-columns: 1fr 1fr;
@@ -239,13 +227,6 @@ p {
   }
 
   #section-5 {
-    background-color: #f6c7b6;
-    margin: auto;
-    text-align: left;
-    color: white;
-    background: #f6c7b6;
-    padding: 120px 100px 100px 100px;
-    font-weight: 600;
     .btn {
       margin: 10px auto;
       font-size: 20px;
@@ -268,42 +249,6 @@ p {
     }
   }
 
-  #what-is-sharespace {
-    .row {
-      display: flex;
-      align-items: center;
-    }
-
-    margin-top: 75px;
-
-    p {
-      padding-right: 75px;
-    }
-
-    .logo-long {
-      max-width: 300px;
-    }
-
-    .phone-img {
-      padding-left: 50px;
-      max-width: 600px;
-    }
-
-    button {
-      margin-top: 10px;
-    }
-  }
-
-  #meet-the-team {
-    .team-row {
-      margin: 0px 15px 15px 0px;
-    }
-
-    .team-img {
-      margin: 0px 15px 15px 30px;
-    }
-  }
-
   #dash-sample {
     padding-top: 50px;
     text-align: center;
@@ -313,7 +258,7 @@ p {
     }
 
     h3 {
-      color: $dark-blue;
+      color: $dark-teal;
       margin-top: 20px;
     }
 

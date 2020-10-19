@@ -4,22 +4,20 @@
 .logo {
   max-width: 120px;
 }
-
+#navbarContent {
+  text-align: center;
+  align-items: center;
+}
 .navbar {
   margin: 0 auto;
   padding: 20px 40px 10px 40px;
   background-color: white;
-  h1 {
-    color: $teal;
-  }
+
   max-width: 1600px;
   #navbarContent {
     width: 1500px;
-    b {
-      font-size: 20px;
-    }
   }
-  #nav-buttons {
+  #nav-button {
     margin-left: auto;
 
     button {
@@ -27,48 +25,63 @@
     }
   }
 
-  .nav-link {
-    color: #7e95cd !important;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 15pt;
-    font-weight: 300;
-    margin: 0px 25px 0px 10px;
-    flex-grow: 1;
-    text-align: center;
-  }
-  .nav-link:hover {
-    color: #fe8b6b;
-  }
-  // border-bottom: 0.25px solid $baby-blue;
-}
+  .dropdown {
+    .dropdown-menu {
+      padding: 0.5em;
+      .dropdown-item {
+        margin: 5px 0px;
+        text-align: center;
+        font-weight: bolder;
+        .active {
+          color: #fe8b6b;
+        }
 
-#log-in {
-  font-size: 1em;
+        &:hover {
+          a {
+            color: #fe8b6b;
+          }
+        }
+        &:active {
+          background-color: #f8f8f8;
+        }
+      }
+    }
+    .dropdown-toggle {
+      padding: 0px;
+    }
+  }
+  .nav-item {
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0px 25px 0px 10px;
+  }
 }
 
 a {
-  color: $teal;
-  font-family: "Source Sans Pro", sans-serif;
+  color: #7e95cd !important;
+  font-size: 18px;
   font-weight: 300;
   &:hover {
-    color: $medium-orange;
-    text-decoration: none;
-    .nav-link {
-      color: $medium-orange;
-    }
+    color: #fe8b6b;
+  }
+}
+.active span {
+  color: #fe8b6b;
+  border-bottom: 2px solid #fe8b6b;
+}
+#log-in {
+  font-size: 0.8em;
+}
+
+@media (max-width: $breakpoint_phone) {
+  a {
+    font-size: 16px;
   }
 }
 
-@media (min-width: $breakpoint_phone) {
-  b {
-    font-size: 15px;
-  }
+@media (min-width: $breakpoint_tablet) {
 }
 
 @media (min-width: $breakpoint_desktop) {
-  .navbar {
-    font-size: 25px;
-  }
   .logo {
     margin: 15px;
     max-width: 130px;

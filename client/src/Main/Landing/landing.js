@@ -25,7 +25,7 @@ export default class Landing extends React.Component {
   render() {
     return (
       <div>
-        <div id="landing-page-content">
+        <div className="content">
           <section id="section-1">
             <div id="what-we-do">
               <div class="row">

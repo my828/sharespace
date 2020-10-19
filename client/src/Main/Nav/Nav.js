@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import logo from "../../img/logo-new.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import SignOutButton from "../../SignOut";
 import { AuthUserContext } from "../../Sessions";
 import "./nav.scss";
@@ -18,50 +18,56 @@ const Navigation = () => (
 const NavigationAuth = () => (
   <nav class="navbar navbar-expand-md" style={{ height: "5.5rem" }}>
     <div class="d-flex">
-      <Link to="/">
+      <NavLink to="/">
         <img src={logo} class="logo" alt="logo" />
-      </Link>
+      </NavLink>
     </div>
     <div id="nav-buttons">
-      <Link to="/">
+      <NavLink to="/">
         <SignOutButton />
-      </Link>
+      </NavLink>
     </div>
   </nav>
 );
 
 const NavigationNonAuth = () => (
   <Navbar className="navbar" expand="md">
-    <Link to="/sharespace" className="navbar-brand">
+    <NavLink to="/sharespace" className="navbar-brand">
       <img src={logo} class="logo" alt="logo" />
-    </Link>
+    </NavLink>
     <Navbar.Toggle aria-controls="navbarContent"></Navbar.Toggle>
+
     <Navbar.Collapse id="navbarContent">
-      <Nav className="mr-auto">
-        <Link to="/aboutus" className="nav-item">
-          <li class="nav-link">
-            <b>About us</b>
-          </li>
-        </Link>
-        <Link to="/ourtool" className="nav-item">
-          <li class="nav-link">
-            <b>Our Tool</b>
-          </li>
-        </Link>
+      <Nav className="mr-auto nav-links">
+        <NavLink to="/aboutus" className="nav-item">
+          <span>About us</span>
+        </NavLink>
+        <NavLink to="/ourtool" className="nav-item">
+          <span>Our Tool</span>
+        </NavLink>
         <NavDropdown title="Demo">
           <NavDropdown.Item>
-            <Link to="/advocate/currentbookings" className="nav-item">
-              <b>Advocate View</b>
-            </Link>
+            <NavLink to="/advocate/currentbookings">
+              <span>Advocate View</span>
+            </NavLink>
           </NavDropdown.Item>
           <NavDropdown.Item>
-            <Link to="/host/hostdash" className="nav-item">
-              <b>Host View</b>
-            </Link>
+            <NavLink to="/host/hostdash">
+              <span>Host View</span>
+            </NavLink>
           </NavDropdown.Item>
         </NavDropdown>
       </Nav>
+      <hr />
+      <div id="nav-button">
+        <NavLink to="/signin">
+          <button class="btn btn-block btn-yellow-fill" id="log-in">
+            Sign In
+          </button>
+        </NavLink>
+      </div>
     </Navbar.Collapse>
+
     {/* <button
       className="navbar-toggler"
       type="button"
@@ -125,13 +131,7 @@ const NavigationNonAuth = () => (
         </button>
         <input type="hidden" name="_next" value="/"></input>
       </form> */}
-    {/* <div id="nav-buttons">
-          <Link to="/signin">
-            <button class="btn btn-yellow-fill" id="log-in">
-              Sign In
-            </button>
-          </Link>
-        </div> */}
+
     {/* </div> */}
     {/* </div> */}
   </Navbar>
