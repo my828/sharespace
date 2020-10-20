@@ -18,12 +18,12 @@ section {
     visibility: hidden;
 }
 
-.logo-mobile {
-    img {
-        max-width: 150px;
-        margin-top: 30px;
-    }
-}
+// .logo-mobile {
+//     img {
+//         max-width: 150px;
+//         margin-top: 30px;
+//     }
+// }
 
 
 
@@ -43,11 +43,11 @@ section {
     display: none;
 }
 
-.logo-mobile {
-    display: inline;
-    text-align: center; 
-    color: $teal;
-}
+// .logo-mobile {
+//     display: inline;
+//     text-align: center; 
+//     color: $teal;
+// }
 
 .row-cards {
     display: flex;
@@ -56,51 +56,9 @@ section {
 }
 
 
-#meet-the-team {
-    line-height: 1;
 
-    h3 {
-        color: $medium-orange;
-        margin: 50px 0 0px 0;
-    }
 
-    h5 {
-        margin-bottom: 0;
-    }
 
-    .team-desc {
-        margin-bottom: 20px;
-        padding-right: 500px;
-    }
-
-    #position {
-        color: $light-pink;
-        margin-bottom: 0;
-    }
-
-    .team-img {
-        max-width: 175px;
-        max-height: 175px;
-        padding: 0;
-        margin-right: auto;
-        margin-left: auto;
-    }
-    
-    .team-row {
-       .team-member {
-           margin-bottom: 20px;
-       }
-
-    }
-}
-
-#section-5 {
-    .btn {
-        margin-top: 15px;
-        font-size: 20px;
-        padding: 15px 20px 10px 20px;
-    }
-}
 
 #section-6 {
     padding: 50px 0 100px 0px;
@@ -110,33 +68,13 @@ section {
     }
 }
 
-#what-is-sharespace {
-    .what-is {
-        color: $light-orange;
-    }
-    margin-bottom: 75px;
-}
+// #what-is-sharespace {
+//     .what-is {
+//         color: $light-orange;
+//     }
+//     margin-bottom: 75px;
+// }
 
-#who-are-we {
-    margin-top: 75px;
-    margin-bottom: 75px;
-
-    h3 {
-        color: $medium-orange;
-    }
-
-    img {
-        max-width: 75%;
-        float: right;
-    }
-
-
-    .row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-}
 
 @media (min-width: 769px) {
     .logo {
@@ -144,9 +82,9 @@ section {
         max-width: 150px;
     }
 
-    .logo-mobile {
-        display: none;
-    }
+    // .logo-mobile {
+    //     display: none;
+    // }
 
     .leave-site {
         visibility: visible;
@@ -289,41 +227,9 @@ section {
         }
     }
 
-    #what-is-sharespace {
-        .row {
-            display: flex;
-            align-items: center;
-        }
-        
-        margin-top: 75px;
 
-        p {
-            padding-right: 75px;
-        }
-        
-        .logo-long {
-            max-width: 300px;
-        }
 
-        .phone-img {
-            padding-left: 50px;
-            max-width: 600px;
-        }
-
-        button {
-            margin-top: 10px;
-        }
-    }
-
-    #meet-the-team {
-        .team-row {
-            margin: 0px 15px 15px 0px;
-        }
-
-        .team-img {
-            margin: 0px 15px 15px 30px;
-        }
-    }
+  
 
     #dash-sample {
         padding-top: 50px;

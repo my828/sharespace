@@ -5,7 +5,7 @@ import SignUp from "./Main/SignUp";
 import Stay from "./Stay";
 import Landing from "./Main/Landing/landing";
 import Footer from "./Main/Footer";
-import AboutUs from "./Main/AboutUs";
+import AboutUs from "./Main/AboutUs/AboutUs";
 import OurTool from "./Main/OurTool";
 import CurrentBookings from "./Advocate/CurrentBookings";
 import SignIn from "./Main/SignIn";

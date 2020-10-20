@@ -1,61 +1,92 @@
-@import "../../style/breakpoints";
 @import "../../style/colors";
+@import "../../style/breakpoints";
 
+.logo {
+  max-width: 120px;
+}
+#navbarContent {
+  text-align: center;
+  align-items: center;
+}
 .navbar {
-  display: none;
-  padding: 0px 20px 0px 20px;
-  h1 {
-    color: $teal;
+  margin: 0 auto;
+  padding: 20px 40px 10px 40px;
+  background-color: white;
+
+  max-width: 1600px;
+  #navbarContent {
+    width: 1500px;
   }
-  border-bottom: 0.25px solid $baby-blue;
+  #nav-button {
+    margin-left: auto;
+
+    button {
+      margin: 0px 5px 0px 5px;
+    }
+  }
+
+  .dropdown {
+    .dropdown-menu {
+      padding: 0.5em;
+      .dropdown-item {
+        margin: 5px 0px;
+        text-align: center;
+        font-weight: bolder;
+        .active {
+          color: #fe8b6b;
+        }
+
+        &:hover {
+          a {
+            color: #fe8b6b;
+          }
+        }
+        &:active {
+          background-color: #f8f8f8;
+        }
+      }
+    }
+    .dropdown-toggle {
+      padding: 0px;
+    }
+  }
+  .nav-item {
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0px 25px 0px 10px;
+  }
 }
 
-.nav-content {
-  margin: 0 auto;
-}
-#log-in {
-  font-size: 1em;
-}
 a {
-  color: $teal;
-  font-family: "Source Sans Pro", sans-serif;
+  color: #7e95cd !important;
+  font-size: 18px;
   font-weight: 300;
   &:hover {
-    color: $medium-orange;
-    text-decoration: none;
+    color: #fe8b6b;
   }
+}
+.active span {
+  color: #fe8b6b;
+  border-bottom: 2px solid #fe8b6b;
+}
+#log-in {
+  font-size: 0.8em;
+}
+
+@media (max-width: $breakpoint_phone) {
+  a {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: $breakpoint_tablet) {
 }
 
 @media (min-width: $breakpoint_desktop) {
-  .navbar {
-    display: flex;
-    flex-wrap: nowrap;
-    background-color: white;
-    font-size: 1.4em;
-
-    img {
-      max-height: 80px;
-    }
-    .nav-content {
-      width: 1500px;
-    }
-    #nav-buttons {
-      margin-left: auto;
-
-      button {
-        margin: 0px 5px 0px 5px;
-      }
-    }
-
-    .nav-item {
-      margin: 0px 25px 0px 10px;
-      flex-grow: 1;
-    }
+  .logo {
+    margin: 15px;
+    max-width: 130px;
   }
-
   .navbar-nav {
-    justify-content: space-between;
-    flex-grow: 1;
     margin: 0px 40px 0px 40px;
   }
 }

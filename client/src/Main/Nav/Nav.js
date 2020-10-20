@@ -1,6 +1,7 @@
 import React from "react";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import logo from "../../img/logo-new.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import SignOutButton from "../../SignOut";
 import { AuthUserContext } from "../../Sessions";
 import "./nav.scss";
@@ -17,54 +18,96 @@ const Navigation = () => (
 const NavigationAuth = () => (
   <nav class="navbar navbar-expand-md" style={{ height: "5.5rem" }}>
     <div class="d-flex">
-      <Link to="/">
+      <NavLink to="/">
         <img src={logo} class="logo" alt="logo" />
-      </Link>
+      </NavLink>
     </div>
     <div id="nav-buttons">
-      <Link to="/">
+      <NavLink to="/">
         <SignOutButton />
-      </Link>
+      </NavLink>
     </div>
   </nav>
 );
 
 const NavigationNonAuth = () => (
-    <nav
-      class="navbar navbar-expand-md d-flex justify-content-between"
-      style={{ height: "5.5rem" }}
+  <Navbar className="navbar" expand="md">
+    <NavLink to="/sharespace" className="navbar-brand">
+      <img src={logo} class="logo" alt="logo" />
+    </NavLink>
+    <Navbar.Toggle aria-controls="navbarContent"></Navbar.Toggle>
+
+    <Navbar.Collapse id="navbarContent">
+      <Nav className="mr-auto nav-links">
+        <NavLink to="/aboutus" className="nav-item">
+          <span>About us</span>
+        </NavLink>
+        <NavLink to="/ourtool" className="nav-item">
+          <span>Our Tool</span>
+        </NavLink>
+        <NavDropdown title="Demo">
+          <NavDropdown.Item>
+            <NavLink to="/advocate/currentbookings">
+              <span>Advocate View</span>
+            </NavLink>
+          </NavDropdown.Item>
+          <NavDropdown.Item>
+            <NavLink to="/host/hostdash">
+              <span>Host View</span>
+            </NavLink>
+          </NavDropdown.Item>
+        </NavDropdown>
+      </Nav>
+      <hr />
+      <div id="nav-button">
+        <NavLink to="/signin">
+          <button class="btn btn-block btn-yellow-fill" id="log-in">
+            Sign In
+          </button>
+        </NavLink>
+      </div>
+    </Navbar.Collapse>
+
+    {/* <button
+      className="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
     >
-      <div class="d-flex nav-content">
-          <Link to="/sharespace">
-            <img src={logo} class="logo" alt="logo" />
-          </Link>
-          <ul class="navbar-nav d-flex justify-content-start align-items-center">
-            <Link to="/aboutus">
-              <li class="nav-link">
-                <b>ABOUT US</b>
-              </li>
-            </Link>
+      <span className="navbar-toggler-icon"></span>
+      Menu
+    </button> */}
+    {/* <div className="nav-content collapse navbar-collapse" id="navbarContent">
+      <ul className="navbar-nav mr-auto justify-content-start align-items-center">
+        <Link to="/aboutus" className="nav-item">
+          <li class="nav-link">
+            <b>ABOUT US</b>
+          </li>
+        </Link>
 
-            <Link to="/ourtool">
-              <li class="nav-link">
-                <b>OUR TOOL</b>
-              </li>
-            </Link>
+        <Link to="/ourtool" className="nav-item">
+          <li class="nav-link">
+            <b>OUR TOOL</b>
+          </li>
+        </Link>
 
-            <Link to="/advocate/currentbookings">
-              <li class="nav-link">
-                <b>ADVOCATE VIEW</b>
-              </li>
-            </Link>
+        <Link to="/advocate/currentbookings" className="nav-item">
+          <li class="nav-link">
+            <b>ADVOCATE VIEW</b>
+          </li>
+        </Link>
 
-            <Link to="/host/hostdash">
-              <li class="nav-link">
-                <b>HOST VIEW</b>
-              </li>
-            </Link>
-          </ul>
-        <div class="d-flex align-items-center">
-          {/* <form
+        <Link to="/host/hostdash" className="nav-item">
+          <li class="nav-link">
+            <b>HOST VIEW</b>
+          </li>
+        </Link>
+      </ul> */}
+    {/* <div class="d-flex align-items-center"> */}
+    {/* <form
         id="contact"
         class="d-flex justify-content-end align-items-center"
         action="https://formspree.io/sharespace.app@gmail.com"
@@ -88,16 +131,10 @@ const NavigationNonAuth = () => (
         </button>
         <input type="hidden" name="_next" value="/"></input>
       </form> */}
-          <div id="nav-buttons">
-            <Link to="/signin">
-              <button class="btn btn-yellow-fill" id="log-in">
-                Sign In
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </nav>
+
+    {/* </div> */}
+    {/* </div> */}
+  </Navbar>
 );
 
 export default Navigation;

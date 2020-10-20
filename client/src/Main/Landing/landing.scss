@@ -1,20 +1,18 @@
 @import "../../style/colors";
+@import "../../style/breakpoints";
+
 p {
-  font-size: 20px;
+  font-size: 18px;
 }
-#landing-page-content {
-  margin: 0px auto;
-  max-width: 1600px;
-}
+
 #section-1 {
-  color: $dark-blue;
   text-align: left;
   img {
-    //margin-top: 30px;
-    margin-bottom: 30px;
     width: 100%;
   }
-
+  h2 {
+    padding-right: 150px;
+  }
   .logo-img {
     max-width: 200px;
     padding: 0 0 10px 0;
@@ -26,20 +24,16 @@ p {
   #graphic-2 {
     text-align: center;
   }
-  img {
-    width: 80%;
-  }
 }
 
-#section-3 {
+#how-you-can-help {
   .card {
     padding-right: 0px;
     padding-left: 0px;
-    //margin: 0px 10px 0px 0px;
     border: none;
 
     .card-body {
-      text-align: left;
+      //   text-align: left;
       padding: 0px;
       margin: 0px 30px 0px 0px;
 
@@ -51,16 +45,142 @@ p {
   }
 }
 
-@media (min-width: 769px) {
-  .logo {
-    margin: 15px 15px 15px 15px;
-    max-width: 150px;
-  }
+#who-we-work-with {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  .contents {
+    margin-top: 30px;
+    display: grid;
+    justify-content: space-evenly;
+    .wwww-card {
+      box-shadow: 0 4px 8px 2px rgba(65, 65, 65, 0.2);
+      margin: 5px 8px;
 
-  .logo-mobile {
-    display: none;
+      img {
+        margin: 30px 30px 0px 30px;
+        max-width: 70%;
+        height: 80px;
+      }
+      div {
+        margin: 20px 30px;
+      }
+      .title {
+        font-size: 1.4em;
+        padding: 5px 0px;
+        color: $dark-blue;
+      }
+    }
   }
+}
+#hwsy {
+  margin-top: 30px;
+  margin-bottom: 70px;
+  .slick-slider {
+    .slick-dots button {
+      width: 15px;
+    }
+  }
+  .slick-list .slide {
+    align-items: center;
+    justify-content: center;
+    img {
+      max-width: 210px;
+      margin: 0px;
+    }
+    h5 {
+      font-weight: 500;
+    }
+    div {
+      margin: 0px 50px;
+    }
+  }
+}
+#section-5 {
+  .btn {
+    margin: 10px auto;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+  }
+  div {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: $breakpoint_tablet) {
+  p {
+    font-size: 16px;
+  }
+  section {
+    margin: 60px 30px;
+  }
+  h4 {
+    text-align: center;
+  }
+  #how-you-can-help {
+    img {
+      margin: auto;
+    }
+    .card-body {
+      text-align: center;
+    }
+  }
+  #hwsy {
+    margin-top: 30px;
+    margin-bottom: 70px;
+    .slick-slider {
+      margin: 50px auto;
+      .slick-dots button {
+        width: 15px;
+      }
+    }
+    .slick-list .slide {
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      img {
+        max-width: 210px;
+        margin: auto;
+      }
+      h5 {
+        font-weight: 500;
+      }
+      div {
+        margin: auto;
+        width: 90%;
+        margin-top: 30px;
+      }
+    }
+  }
+}
 
+@media (min-width: $breakpoint_tablet) {
+  section {
+    margin: 50px 40px;
+  }
+  #who-we-work-with {
+    .contents {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  #hwsy {
+    margin-top: 30px;
+    margin-bottom: 70px;
+    .slick-slider {
+      margin: 50px auto;
+      .slick-dots button {
+        width: 15px;
+      }
+    }
+    .slick-list .slide {
+      display: flex !important;
+      div {
+        max-width: 50%;
+      }
+    }
+  }
+}
+
+@media (min-width: $breakpoint_desktop) {
   .leave-site {
     visibility: visible;
     right: 0;
@@ -72,19 +192,6 @@ p {
     button {
       padding: 10px 20px 10px 20px;
     }
-  }
-
-  #section-1 {
-    img {
-      //margin-top: 70px;
-      //margin-bottom: 50px;
-      padding: 0px 25px 0px 100px;
-    }
-    margin-top: 60px;
-    h2 {
-      padding-right: 150px;
-    }
-    margin-bottom: 50px;
   }
 
   #section-2 {
@@ -108,67 +215,25 @@ p {
     }
   }
 
-  #section-3 {
+  #how-you-can-help {
     padding-top: 30px;
     margin-top: 50px;
   }
 
   #who-we-work-with {
-    text-align: left;
-    margin-top: 50px;
-    margin-bottom: 50px;
-
-    h4 {
-      margin-bottom: 20px;
-      color: $dark-blue;
-    }
-
     .contents {
-      margin-top: 30px;
-      display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      justify-content: space-evenly;
-      .wwww-card {
-        box-shadow: 0 4px 8px 2px rgba(65, 65, 65, 0.2);
-        margin: 5px 8px;
-
-        img {
-          margin: 30px 30px 0px 30px;
-          max-width: 70%;
-          height: 80px;
-        }
-        div {
-          margin: 20px 30px;
-        }
-        .title {
-          font-size: 1.5em;
-        }
-      }
     }
   }
-  #hwsy {
-    .slick-slider {
-      margin: 50px auto;
-      height: 250px;
-      .slick-dots button {
-        width: 15px;
-      }
+
+  #section-5 {
+    .btn {
+      margin: 10px auto;
+      font-size: 20px;
+      padding: 10px 20px 10px 20px;
     }
-    .slick-list .slide {
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      img {
-        max-width: 210px;
-        margin: 0px;
-      }
-      h5 {
-        font-weight: 500;
-      }
-      div {
-        max-width: 50%;
-        margin: 0px 50px;
-      }
+    div {
+      max-width: 1500px;
     }
   }
   #what-we-do {
@@ -184,42 +249,6 @@ p {
     }
   }
 
-  #what-is-sharespace {
-    .row {
-      display: flex;
-      align-items: center;
-    }
-
-    margin-top: 75px;
-
-    p {
-      padding-right: 75px;
-    }
-
-    .logo-long {
-      max-width: 300px;
-    }
-
-    .phone-img {
-      padding-left: 50px;
-      max-width: 600px;
-    }
-
-    button {
-      margin-top: 10px;
-    }
-  }
-
-  #meet-the-team {
-    .team-row {
-      margin: 0px 15px 15px 0px;
-    }
-
-    .team-img {
-      margin: 0px 15px 15px 30px;
-    }
-  }
-
   #dash-sample {
     padding-top: 50px;
     text-align: center;
@@ -229,7 +258,7 @@ p {
     }
 
     h3 {
-      color: $dark-blue;
+      color: $dark-teal;
       margin-top: 20px;
     }
 
