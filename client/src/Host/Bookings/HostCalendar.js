@@ -4,10 +4,9 @@ import React, {Children} from 'react'
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
 //import 'react-big-calendar/lib/css/react-big-calendar.css';
-import "../style/App.css";
 import Edit from '@material-ui/icons/Edit';
-import AddAvailabiliity from './EditAvailability';
-import { withFirebase } from '../Firebase';
+import AddAvailabiliity from '../EditAvailability';
+import { withFirebase } from '../../Firebase';
 import { compose } from 'recompose';
 import BookingInfo from './BookingInfo';
 import { Button, Select, MenuItem, Input, FormControl, InputLabel, Chip, Dialog, DialogContent, DialogActions} from '@material-ui/core/';
@@ -48,7 +47,7 @@ class Calendar extends React.Component {
     //     })
       this.state = {
             view: [],
-            space: 0,
+            space: this.props.space,
             info: '',
             selectedLabel: 'Block',
             // currentBookings: [],
@@ -62,8 +61,7 @@ class Calendar extends React.Component {
 
     // for firebase and data transfer
     componentDidMount() {
-        console.log("INSIDE COMPONENTT DID MOUNT")
-        if(this.props.profile.listings === undefined || this.props.profile.listings.length == 0) {
+        if(this.props.user.listings === undefined || this.props.user.listings.length == 0) {
             console.log("there are no current listings")
         } else {
             this.props.firebase.auth.onAuthStateChanged((user)=> {
@@ -74,7 +72,7 @@ class Calendar extends React.Component {
             }); 
             
             this.setState({
-                listings: this.props.profile.listings,
+                listings: this.props.user.listings,
             })
         }
     }
@@ -219,31 +217,32 @@ class Calendar extends React.Component {
           view: {
             width: '10rem'
           },
-          controls: {
-              //width: '50%',
-              display: 'flex',
-              justifyContent: 'around',
-              alignItems: 'center',
-              marginRight: "20px"
-          }
+        //   controls: {
+        //       //width: '50%',
+        //       display: 'flex',
+        //       justifyContent: 'around',
+        //       alignItems: 'center',
+        //       marginRight: "20px"
+        //   }
       } 
 
       const { guest, info, space, add, listings } = this.state;
-    //   this.state.listings = this.props.profile.listings
-    //   console.log(space)
-    //   console.log(this.state.listings[space])
-      let currentBookings = []
+
+      // let bookings = []
       let availability = []
       let check = false;
 
-    //   const listings = this.props.profile.listings
-      if (listings !== undefined && listings.length != 0) {
-        currentBookings = listings[space].currentBookings;  
+    if (listings !== undefined && listings.length != 0) {
+      // listings[space].currentBookings.map((booking, idx) => {
+      //   bookings.push({
+      //     id: booking.id,
+      //     start: new Date(booking.start),
+      //     end: new Date(booking.end),
+      //     title: booking.advocateInfo.name
+      //     })
+      //   });
         availability = listings[space].availability;
-
-        check = true
       }
-
       const dateCellWrapper = ({children, value}) => 
             React.cloneElement(Children.only(children), {
                 className:  children.props.className + (this.availability(value) ? '' : ' rbc-off-range-bg'),
@@ -253,82 +252,65 @@ class Calendar extends React.Component {
                 //     // (value < moment().add(15, 'days') &&  value > moment().add(8, 'days'))) ? 'white' : 'lightgray',
                 //     backgroundColor: this.booked(value) ? 'white' : 'lightgray',
                 // }, 
-        });       
+            });  
+      let availBtnStyle = { fontSize: "14pt", padding: "10px 0px" };
+      if (!check) {
+        availBtnStyle = {
+          ...availBtnStyle,
+          color: "gray",
+          backgroundColor: "lightgray",
+          borderColor: "gray",
+        };
+      }
     return (
-        <div className="App" style={{width: "100%"}}>
+      <div className="App" style={{ width: "100%" }}>
         <div style={style.head}>
-        {
-            check ? 
-            <Button 
-                id="button"
-                style={{fontSize: "14pt", padding: "0px 25px"}}
-                variant="contained"
-                onClick={this.handleClickAdd('')} 
-                >
-                <Edit style={{width: "2em"}}/> 
-                Edit Availability
-            </Button> : 
-            <Button 
-            id="button"
-            style={{fontSize: "14pt", padding: "0px 25px", color: "gray", backgroundColor: 'lightgray', borderColor: 'gray'}}
-            variant="contained"
-            onClick={this.handleClickAdd('')} 
-            disabled>
-            <Edit style={{width: "2em"}}/> 
-            Edit Availability
-        </Button>
-        }
-            
-            <div style={style.controls}>
-                {/* <MultiSelect handleView={this.handleView}/> */}
-                <FormControl style={style.view}>
-                    <InputLabel for='space'>Select Space</InputLabel>
-                    <Select
-                        value={space}
-                        defaultValue={space}
-                        onChange={this.handleChange('space')}
-                        id='space'
-                    >
-                    {
-                        listings !== undefined && listings.map((listing, index) => {
-                            return (
-                                <MenuItem value={index}>{listing.name}</MenuItem>
-                            )
-                        })
-                    }
-                    </Select>
-                </FormControl>
-            </div>
+          {
+            <Button
+              id="button"
+              style={availBtnStyle}
+              variant="contained"
+              onClick={this.handleClickAdd("")}
+            >
+              <Edit style={{ width: "2em" }} />
+              Edit Availability
+            </Button>
+          }
         </div>
 
         <Grid container>
-            <div className="calendar">
-                <BigCalendar
-                    localizer={localizer}
-                    defaultDate={new Date()}
-                    defaultView="month"
-                    events={currentBookings}
-                    resizable
-                    onSelectEvent={this.onEventClick}
-                    onSelectSlot={(this.onSlotChange)}
-                    views={['month', 'week', 'day']}
-                    // dayPropGetter={dayPropGetter}
-                    // eventPropGetter={(this.eventStyleGetter)}
-                    components={{
-                        // you have to pass your custom wrapper here
-                        // so that it actually gets used
-                        dateCellWrapper: dateCellWrapper,
-                    }}
-                    style={{ height: "70vh" }}
-                />
-            </div>
+          <div className="calendar">
+            <BigCalendar
+              localizer={localizer}
+              defaultDate={new Date()}
+              defaultView="month"
+              events={this.props.bookings}
+              resizable
+              onSelectEvent={this.onEventClick}
+              onSelectSlot={this.onSlotChange}
+              views={["month", "week", "day"]}
+
+              components={{
+                // you have to pass your custom wrapper here
+                // so that it actually gets used
+                dateCellWrapper: dateCellWrapper,
+              }}
+              style={{ height: "600px" }}
+            />
+          </div>
         </Grid>
-            {/* <GuestInfo open={guest} info={info} click={() => this.setState({guest: false})}/> */}
-            {/* <BookingInfo></BookingInfo> */}
-            <AddAvailabiliity open={add} currentUser={this.props.currentUser} listings={listings} click={this.handleClickAdd('')} profile={this.props.profile} updateAvailability={this.props.updateAvailability} deleteAvailability={this.props.deleteAvailability} userID={this.state.userID}  />
+
+        <AddAvailabiliity
+          open={add}
+          currentUser={this.props.currentUser}
+          listings={listings}
+          click={this.handleClickAdd("")}
+          updateAvailability={this.props.updateAvailability}
+          deleteAvailability={this.props.deleteAvailability}
+          userID={this.state.userID}
+        />
       </div>
-      
-      )
+    );
   }
 }
 

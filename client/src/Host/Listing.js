@@ -18,16 +18,6 @@ import { listing } from '../filter'
 
 
 const styles = theme => ({
-    head: {
-        display: 'flex', 
-        justifyContent: 'space-between',
-        alignItems: 'center', 
-        width: "100%",
-    },
-    main: {
-        width: "100%",
-        paddingRight: "3rem"
-    },
     info: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -92,7 +82,6 @@ class MyListing extends React.Component {
         this.state.listingIDs.push(id)
         this.state.listings.push(object)
         this.props.updateListing(object)
-        console.log(this.props.profile)
     }
     componentDidMount() {
 
@@ -174,34 +163,43 @@ class MyListing extends React.Component {
         })
     }
     render() {
-        console.log(this.state)
-        console.log(this.props)
-        console.log(this.props.profile)
         const { classes } = this.props;
-        let types = ['Listing Name',  'Address', 'Location', 'Zip Code', 'Home Type', 'Number of Guests', 'description', 'Amenities', 'House Rules']
-        var values =[]
-        if(this.props.profile.listings === undefined || this.props.profile.listings.length == 0) {
-            values = [
-                ['House 1', 'Beacon Hill', 'Private Bedroom', '1234 Beacon Hill', 'Apt 7', '98002','1', 'This used to be my son\'s room but he is off to college so it\'s open to people who need help'],
-                ['House 2', '1234 Beacon Hill', 'Beacon Hill', '98002', 'Private Bedroom', '1']
-            ]
+        let types = ['Listing Name',  'Address', 'Location', 'Zip Code', 'Home Type', 'Capacity', 'description', 'Amenities', 'House Rules']
+      var values = []
+      let spaces = this.props.user.listings;
 
-        } else {
-            /// **** MINS HELP PLZ N THNK U*********
-            let spaces = this.props.profile.listings
+      let ids = this.props.user.listingIDs;
+      for (let i = 0; i < spaces.length; i++) {
+        let space = spaces[i];
+        let value = [
+          space.name,
+          space.address,
+          space.location,
+          space.zip,
+          space.type,
+          space.capacity,
+          space.description,
+          space.amenities,
+          space.houseRules,
+        ];
+        values.push(value);
+      }
+        // if(this.props.profile.listings === undefined || this.props.profile.listings.length == 0) {
+        //     values = [
+        //         ['House 1', 'Beacon Hill', 'Private Bedroom', '1234 Beacon Hill', 'Apt 7', '98002','1', 'This used to be my son\'s room but he is off to college so it\'s open to people who need help'],
+        //         ['House 2', '1234 Beacon Hill', 'Beacon Hill', '98002', 'Private Bedroom', '1']
+        //     ]
 
-            console.log(spaces)
-            let ids = this.props.profile.listingIDs
-            for (let i = 0; i < spaces.length; i++) {
-                console.log("GETTING SPACES")
-                let space = spaces[i]
-                console.log(spaces[i])
-                // console.log(space[i])
-                let value = [space.name, space.address, space.location, space.zip, space.type, space.guestCount, space.description, space.amenities, space.houseRules]
-                values.push(value)
-            }
-        }
-        console.log(values)
+        // } else {
+        //     let spaces = this.props.profile.listings
+
+        //     let ids = this.props.profile.listingIDs
+        //     for (let i = 0; i < spaces.length; i++) {
+        //         let space = spaces[i]
+        //         let value = [space.name, space.address, space.location, space.zip, space.type, space.guestCount, space.description, space.amenities, space.houseRules]
+        //         values.push(value)
+        //     }
+        // }
 
         let allListing = [];
 
@@ -213,14 +211,9 @@ class MyListing extends React.Component {
                     value: values[i][j]
                 }
                 listing[j] = obj;
-                console.log(listing[j])
-                console.log(listing)
             }
-            console.log(i)
             allListing[i] = listing;
-            console.log(listing)
         }
-        console.log(allListing)
         let exampleListing = [
             {
                 type: 'Listing Name',
@@ -260,130 +253,154 @@ class MyListing extends React.Component {
             }
         ]
 
-        console.log(allListing)
-
             return (
-                <div className={classes.main}>
-                    <div className={classes.head}>
-                        <h3 class="m-3">MY LISTINGS</h3>
-                        <Button 
-                            variant="contained"
-                            onClick={() => this.setState({ open: true})}
-                            id="button"
+              <div>
+                <div id="title">
+                  <h3 class="m-3">My Listings</h3>
+                  {this.props.user.uid === "" ? (
+                    <p>Please signup to add listings</p>
+                  ) : (
+                    <Button
+                      variant="contained"
+                      onClick={() => this.setState({ open: true })}
+                      id="button"
+                    >
+                      <Add style={{ marginRight: "5px" }}></Add> Add Listing
+                    </Button>
+                  )}
+
+                  {/* start of dialog */}
+                  <Dialog
+                    open={this.state.open}
+                    //open='true'
+                    onClose={() => this.setState({ open: false })}
+                    scroll="paper"
+                    fullWidth="true"
+                    maxWidth="md"
+                    aria-labelledby="scroll-dialog-title"
+                  >
+                    <DialogContent>
+                      <AddSpace
+                        user={this.props.user}
+                        updateListing={this.props.updateListing}
+                        saveListingID={this.saveListingID}
+                        click={this.handleAdd}
+                      ></AddSpace>
+                    </DialogContent>
+                    <DialogActions></DialogActions>
+                  </Dialog>
+                  {/* end of dialog */}
+                </div>
+                <div style={{overflow: "scroll", maxHeight: "700px"}}>
+                  {this.props.user.listings === undefined ||
+                  this.props.user.listings.length == 0 ? (
+                    <p style={{ marginLeft: "50px", color: "#666460" }}>
+                      You have no listings.
+                    </p>
+                  ) : (
+                    allListing.map((data) => {
+                      return (
+                        <ExpansionPanel
+                          style={{
+                            boxShadow: "none",
+                            backgroundColor: "#fdfdfe",
+                            borderBottom: ".5px solid #7e9fa8",
+                            color: "#202e57",
+                            fontFamily: "Source Sans Pro",
+                            borderRadius: 0,
+                            marginLeft: "20px",
+                          }}
                         >
-                            <Add style={{marginRight: "5px"}}></Add> Add Listing
-                        </Button>
-                        {/* start of dialog */}
-                        <Dialog
-                            open={this.state.open}
-                            //open='true'
-                            onClose={() => this.setState({ open: false})}
-                            scroll='paper'
-                            fullWidth='true'
-                            maxWidth='md'
-                            aria-labelledby="scroll-dialog-title"
-                        >
-                            <DialogContent>
-                                <AddSpace user={this.props.user} updateListing={this.props.updateListing} saveListingID={this.saveListingID} click={this.handleAdd}></AddSpace>
-                            </DialogContent>       
-                            <DialogActions>
-                                {/* <Button 
-                                    variant="contained" 
-                                    type="submit"
-                                    onClick={() => 
-                                        this.setState({ open: false})
-                                    }
-                                    id="button" 
-                                >
-                                    Add Listing
-                                </Button> */}
-                            </DialogActions>
-                        </Dialog>
-                        {/* end of dialog */}
-                    </div>
-                    {(this.props.profile.listings === undefined || this.props.profile.listings.length == 0) ?             
-                           <h5 class="m-3">You have no current listings, please add listing</h5>
-                        :
-                        
-                        allListing.map((data) => {
-                            return (
-                                <ExpansionPanel style={{boxShadow:"none", backgroundColor: "#fdfdfe", borderBottom: ".5px solid #7e9fa8", color:"#202e57", 
-                                fontFamily: "Source Sans Pro", borderRadius: 0, marginLeft: "20px"}}>
-                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={{paddingLeft: 0}}>
-                                        <Typography style={{fontSize: "16px", color: "#202e57"}}>{data[0].value}</Typography>
-                                    </ExpansionPanelSummary>
-                                    <ExpansionPanelDetails>
-                                        <div className={classes.info}>
-                                            {
-                                                data.map((detail) => {
-                                                    return (
-                                                        <div style={{
-                                                            //width: '25%',
-                                                            padding: '8px 10px',
-                                                            flex: "1 1 33%"
-                                                        }}>
-                                                        {       
-                                                            (typeof detail.value == 'string' || typeof detail.value == 'number') && 
-                                                            <>
-                                                                <p className={classes.type}>{detail.type}</p>
-                                                                <p className={`${classes.value} ${classes.text}`}>
-                                                                {detail.value }
-                                                                </p>
-                                                            </>
-                                                        }
-                                                        </div>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                    </ExpansionPanelDetails>
-                                    <div>
-                                        {/* <p className={classes.value} style={{fontWeight: 400}}>Home Description:</p>
+                          <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            style={{ paddingLeft: 0 }}
+                          >
+                            <Typography
+                              style={{ fontSize: "16px", color: "#202e57" }}
+                            >
+                              {data[0].value}
+                            </Typography>
+                          </ExpansionPanelSummary>
+                          <ExpansionPanelDetails>
+                            <div className={classes.info}>
+                              {data.map((detail, idx) => {
+                                return (
+                                  <div
+                                    style={{
+                                      //width: '25%',
+                                      padding: "8px 10px",
+                                      flex: "1 1 33%",
+                                    }}
+                                  >
+                                    {(typeof detail.value == "string" ||
+                                      typeof detail.value == "number") &&
+                                      (
+                                        <>
+                                          <p className={classes.type}>
+                                            {detail.type}
+                                          </p>
+                                          <p
+                                            className={`${classes.value} ${classes.text}`}
+                                          >
+                                            {detail.value}
+                                          </p>
+                                        </>
+                                      )}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </ExpansionPanelDetails>
+                            {/* <p className={classes.value} style={{fontWeight: 400}}>Home Description:</p>
                                         <p className={classes.homeDesc}>
                                         {data[data.length - 3].value}
                                         </p> */}
-                                    </div>
-                                    
-                                        {
-                                            data.slice(data.length - 2, data.length).map((value) => {
-                                                return(
-                                                <div>
-                                                    <p className={classes.value} style={{fontWeight: 400}}>{value.type}:</p>
-                                                    <div style={{display: 'flex', flexWrap: 'wrap', margin: '5px', marginBottom: '20px'}}>
-                                                    {
-                                                    value.value.map((d) => {
-                                                        return(
-                                                            <div 
-                                                                id="tags"
-                                                                style={{
-                                                                    border: "0.5px solid",
-                                                                    borderRadius: '0.5rem',
-                                                                    padding: '4px 12px 4px 12px',
-                                                                    margin: '2px'
-                                                                }}
-                                                            >
-                                                            {d}
-                                                            </div>
-                                                        )
-                                                        })
-                                                    }   
-                                                    </div>
-                                                </div>  
-                                                )
-                                            })
-                                             
-                                        }
-                                </ExpansionPanel>
-                                
-                            )
-                        })
-                        }
 
-                    {
-                        
-                    }
+                          {data
+                            .slice(data.length - 2, data.length)
+                            .map((value) => {
+                              return (
+                                <div>
+                                  <p
+                                    className={classes.value}
+                                    style={{ fontWeight: 400 }}
+                                  >
+                                    {value.type}:
+                                  </p>
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      flexWrap: "wrap",
+                                      margin: "5px",
+                                      marginBottom: "20px",
+                                    }}
+                                  >
+                                    {value.value.map((d) => {
+                                      return (
+                                        <div
+                                          id="tags"
+                                          style={{
+                                            border: "0.5px solid",
+                                            borderRadius: "0.5rem",
+                                            padding: "4px 12px 4px 12px",
+                                            margin: "2px",
+                                          }}
+                                        >
+                                          {d}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                        </ExpansionPanel>
+                      );
+                    })
+                  )}
                 </div>
-            )    
+              </div>
+            );    
         
     }
 }

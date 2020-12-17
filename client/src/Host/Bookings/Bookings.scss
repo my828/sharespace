@@ -1,0 +1,28 @@
+#space-selector-container {
+  #space-selector {
+    width: 10em;
+    margin-bottom: 20px;
+  }
+}
+#booking-cards {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  overflow: scroll;
+  max-height: 600px;
+  // grid-template-rows: 30%;
+  margin: 10px;
+  .booking-card {
+    max-width: 300px;
+    border: 0.5px solid #d3dbee;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10px;
+    .content {
+      font-weight: 300;
+    }
+    &:hover {
+      cursor: pointer;
+      border-color: #7e9fa8;
+    }
+  }
+}

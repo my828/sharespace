@@ -1,0 +1,19 @@
+#search-start-date {
+  margin-right: 10px;
+  width: 200px;
+  color: #aaaaaa;
+}
+#search-end-date {
+  margin-left: 5px;
+  width: 200px;
+  color: #aaaaaa;
+}
+.back-button {
+    text-align: start;
+    font-size: 1.5rem;
+    color:  #7e95cd;
+    &:hover {
+        color: #fe8b6b;
+        cursor: pointer;
+    }
+}

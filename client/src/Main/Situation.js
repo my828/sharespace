@@ -27,7 +27,7 @@ export default class Signup extends React.Component {
                 <div class="d-flex justify-content-around" >
                     <Link 
                         to={{
-                            pathname: "/signup",
+                            pathname: "/sharespace/signup",
                             state: {
                                 type: "host"
                             } 
@@ -44,7 +44,7 @@ export default class Signup extends React.Component {
                         </div>
                     </Link>
                     <Link to={{
-                            pathname: "/signup",
+                            pathname: "/sharespace/signup",
                             state: {
                                 type: "advocate"
                             } 

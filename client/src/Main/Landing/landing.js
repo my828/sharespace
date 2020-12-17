@@ -49,13 +49,13 @@ export default class Landing extends React.Component {
                     need it.
                   </p>
 
-                  <Link to="/ourtool">
+                  <Link to="/sharespace/ourtool">
                     <button class="btn btn-yellow-fill mt-2 mr-4">
-                      LEARN MORE
+                      Learn more
                     </button>
                   </Link>
-                  <Link to="/situation">
-                    <button class="btn btn-teal-fill mt-2">SIGN UP</button>
+                  <Link to="/sharespace/situation">
+                    <button class="btn btn-teal-fill mt-2">Sign up</button>
                   </Link>
                 </div>
                 <div class="col-12 col-md-6">

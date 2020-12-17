@@ -23,7 +23,7 @@ const NavigationAuth = () => (
       </NavLink>
     </div>
     <div id="nav-buttons">
-      <NavLink to="/">
+      <NavLink to="/sharespace">
         <SignOutButton />
       </NavLink>
     </div>
@@ -39,20 +39,20 @@ const NavigationNonAuth = () => (
 
     <Navbar.Collapse id="navbarContent">
       <Nav className="mr-auto nav-links">
-        <NavLink to="/aboutus" className="nav-item">
+        <NavLink to="/sharespace/aboutus" className="nav-item">
           <span>About us</span>
         </NavLink>
-        <NavLink to="/ourtool" className="nav-item">
+        <NavLink to="/sharespace/ourtool" className="nav-item">
           <span>Our Tool</span>
         </NavLink>
         <NavDropdown title="Demo">
           <NavDropdown.Item>
-            <NavLink to="/advocate/currentbookings">
+            <NavLink to="/advocate/bookings">
               <span>Advocate View</span>
             </NavLink>
           </NavDropdown.Item>
           <NavDropdown.Item>
-            <NavLink to="/host/hostdash">
+            <NavLink to="/host/bookings">
               <span>Host View</span>
             </NavLink>
           </NavDropdown.Item>
@@ -60,7 +60,7 @@ const NavigationNonAuth = () => (
       </Nav>
       <hr />
       <div id="nav-button">
-        <NavLink to="/signin">
+        <NavLink to="/sharespace/signin">
           <button class="btn btn-block btn-yellow-fill" id="log-in">
             Sign In
           </button>

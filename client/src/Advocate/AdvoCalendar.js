@@ -1,16 +1,9 @@
 import React from 'react'
-// import FullCalendar from '@fullcalendar/react'
-// import dayGridPlugin from '@fullcalendar/daygrid'
-// import timeGridPlugin from "@fullcalendar/timegrid";
-// import interactionPlugin from "@fullcalendar/interaction";
 
-// import './main.scss' // webpack must be configured to do this
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
-//import 'react-big-calendar/lib/css/react-big-calendar.css';
 import "../style/App.css";
-//import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
-// import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+
 import HostInfo from './HostInfo';
 import { Host } from '../filter';
 import { withFirebase } from '../Firebase';
@@ -55,7 +48,7 @@ class Calendar extends React.Component {
 
     }); 
       if(this.props.allAvail != undefined && this.props.allAvail.length != 0) {
-      
+      console.log("Avail: ",this.props.allAvail)
         var events = []    
         this.props.allAvail.map((a) => {
           console.log(a)
@@ -146,7 +139,7 @@ class Calendar extends React.Component {
             onEventResize={this.onEventResize}
             resizable
             onSelectEvent={this.onEventClick}
-            style={{ height: "65vh" }}
+            style={{ height: "600px" }}
             views={['month', 'week', 'day']}
             />
             {/* {this.state.events !== undefined && this.state.events != 0  ? */}

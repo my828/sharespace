@@ -2,7 +2,7 @@
 @import "../../style/breakpoints";
 
 .logo {
-  max-width: 120px;
+  max-width: 100px;
 }
 #navbarContent {
   text-align: center;
@@ -60,7 +60,7 @@ a {
   color: #7e95cd !important;
   font-size: 18px;
   font-weight: 300;
-  &:hover {
+  &:hover span{
     color: #fe8b6b;
   }
 }
@@ -84,7 +84,6 @@ a {
 @media (min-width: $breakpoint_desktop) {
   .logo {
     margin: 15px;
-    max-width: 130px;
   }
   .navbar-nav {
     margin: 0px 40px 0px 40px;

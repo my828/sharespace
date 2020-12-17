@@ -1,0 +1,18 @@
+#button {
+  width: 220px;
+  margin: 0.3rem;
+  background-color: #202e57;
+  border: 2px solid #202e57;
+  text-decoration: none;
+  text-transform: none;
+  box-shadow: none;
+  font-family: Source Sans Pro;
+  color: white;
+  font-weight: 400;
+  font-size: 14pt;
+  &:hover {
+    background-color: #304ea7;
+    border-color: #304ea7;
+    color: #ffff;
+  }
+}

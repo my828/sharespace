@@ -26,13 +26,13 @@ export function makeOptions(filter) {
     return options;
 }
 export function CustomSelect(props) {
-    const [value, setValue] = React.useState(props.type);
+    // const [value, setValue] = React.useState(props.type);
 
-    function handleSelect(event) {
-        console.log(event.target)
-        // props.onSelect('location', event.target.value)
-        // setValue(event.target.value);
-    }
+    // function handleSelect(event) {
+    //     console.log(event.target)
+    //     // props.onSelect('location', event.target.value)
+    //     // setValue(event.target.value);
+    // }
     return (
         <div style={{padding: "10px 0px"}}>
             {props.data.type}

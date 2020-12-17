@@ -1,0 +1,36 @@
+#our-tool-content {
+  max-width: 1600px;
+  margin: auto;
+}
+
+#dash-sample {
+  padding-top: 50px;
+  text-align: center;
+  img {
+    max-width: 1200px;
+  }
+  h3 {
+    color: #5a637e;
+    margin-top: 20px;
+  }
+  p {
+    text-align: left;
+    padding: 0 200px 0 200px;
+  }
+}
+#calendar {
+  margin-right: 0;
+  margin-top: 75px;
+  .row {
+    align-items: center;
+  }
+  img {
+    max-width: 100%;
+  }
+  p {
+    margin-bottom: 50px;
+  }
+  .btn-yellow-fill {
+    margin-right: 20px;
+  }
+}
