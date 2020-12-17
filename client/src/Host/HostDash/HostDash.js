@@ -277,19 +277,19 @@ class HostDash extends React.Component {
                     deleteAvailability={this.props.deleteAvailability}
                   ></Bookings>
                 )}
+                {view == "listings" && (
+                  <MyListings
+                    user={this.props.user}
+                    updateListing={this.props.updateListing}
+                  ></MyListings>
+                )}
+
                 {view == "profile" && (
                   <MyProfile
                     user={this.props.user}
                     // profile={this.props.profile}
                     updateListings={this.props.updateListing}
                   ></MyProfile>
-                )}
-
-                {view == "listings" && (
-                  <MyListings
-                    user={this.props.user}
-                    updateListing={this.props.updateListing}
-                  ></MyListings>
                 )}
 
                 {/* {(view == "bookings" && bookingType === "pending") && (

@@ -40,17 +40,7 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: {
-                firstName: "",
-                lastName: "",
-                gender: "",
-                email: "",
-                phone: "",
-                religion: [],
-                languages: [],
-                ethnicities: []
-
-            }
+            user: this.props.user
         }
     }
     componentDidMount() {
@@ -76,22 +66,23 @@ class Profile extends React.Component {
     }
  
     render() {
-        let user = {
-                firstName: " ",
-                lastName: " ",
-                gender: " ",
-                email: " ",
-                phone: " ",
-                religion: [" "],
-                languages: [" "],
-                ethnicities: [" "]
-        }
-        if(this.state.user !== null) {
-            user = this.state.user
-            console.log(user)
-        }
+        // let user = {
+        //         firstName: " ",
+        //         lastName: " ",
+        //         gender: " ",
+        //         email: " ",
+        //         phone: " ",
+        //         religion: [" "],
+        //         languages: [" "],
+        //         ethnicities: [" "]
+        // }
+        // if(this.state.user !== null) {
+        //     user = this.state.user
+        //     console.log(user)
+        // }
         console.log(this.state.user)
-        const { classes } = this.props;
+      const { classes } = this.props;
+      const { user } = this.state;
         let profile = [
             {
                 type: 'First Name',
@@ -103,33 +94,33 @@ class Profile extends React.Component {
             },
             {
                 type: 'Gender',
-                value: user.gender
+                value: user.userInfo.gender
             },
             {
                 type: 'Email',
-                value: user.email
+                value: user.userInfo.email
             },
             {
                 type: 'Phone',
-                value: user.phone
+                value: user.userInfo.phone
             },
             {
                 type: 'Religion',
-                value: user.religion
+                value: user.userInfo.religion
             },
             {
                 type: 'Ethnicities',
-                value: user.ethnicities
+                value: user.userInfo.ethnicities
             },
             {
                 type: 'Languages',
-                value: user.languages
+                value: user.userInfo.languages
             }
         ]
         {console.log(profile)}
 
         return (
-          <div >
+          <div>
             <div id="title">
               <h3 class="m-3">MY PROFILE</h3>
             </div>
@@ -152,45 +143,52 @@ class Profile extends React.Component {
                     )
                   );
                 })}
-                <div style={{ width: "100%" }}></div>
-                {profile
-                  .slice(profile.length - 3, profile.length)
-                  .map((value) => {
-                    return (
-                      <div>
-                        <p
-                          className={classes.value}
-                          style={{ fontWeight: 400 }}
-                        >
-                          {value.type}:
-                        </p>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            margin: "5px",
-                            marginBottom: "20px",
-                          }}
-                        >
-                          {value.value.map((d) => {
-                            return (
-                              <div
-                                id="tags"
-                                style={{
-                                  border: "0.5px solid",
-                                  borderRadius: "0.5rem",
-                                  padding: "4px 12px 4px 12px",
-                                  margin: "2px",
-                                }}
-                              >
-                                {d}
-                              </div>
-                            );
-                          })}
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                  }}
+                >
+                  {profile
+                    .slice(profile.length - 3, profile.length)
+                    .map((value) => {
+                      return (
+                        <div style={{margin: '20px'}}>
+                          {" "}
+                          <p
+                            className={classes.value}
+                            style={{ fontWeight: 400 }}
+                          >
+                            {value.type}:
+                          </p>
+                          <div
+                            style={{
+                              display: "flex",
+                              flexWrap: "wrap",
+                              margin: "5px",
+                              marginBottom: "20px",
+                            }}
+                          >
+                            {value.value.map((d) => {
+                              return (
+                                <div
+                                  id="tags"
+                                  style={{
+                                    border: "0.5px solid",
+                                    borderRadius: "0.5rem",
+                                    padding: "4px 12px 4px 12px",
+                                    margin: "2px",
+                                  }}
+                                >
+                                  {d}
+                                </div>
+                              );
+                            })}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                </div>
               </div>
             </div>
 
