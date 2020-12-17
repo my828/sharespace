@@ -121,7 +121,7 @@ class Search extends React.Component {
          id: "-Lg_NkQfSNsbVx9Jw-Il",
          lastName: "Yang",
          listingData: {
-           address: "6816 25th Ave NE",
+           address: "4525 10th Ave S",
            amenities: ["Voicemail", "Computer Access"],
            availability: [
              {
@@ -133,9 +133,9 @@ class Search extends React.Component {
                state: "available",
              },
            ],
-           checkin: "",
-           checkout: "",
-           description: "hello",
+           checkin: "2:00pm",
+           checkout: "11:00am",
+           description: "Please make yourself at home.",
            guestCount: 2,
            hostID: "IxWv7C5AeoMb6cuzrQ72DbFqZJb2",
            houseRules: ["No Pets", "No Alcohol"],
@@ -148,7 +148,7 @@ class Search extends React.Component {
            zip: "98115",
          },
          listingPushID: "-Lg_NkQhNCIkSZc0CZ4m",
-         phone: "4252440481",
+         phone: "4251234567",
          religion: ["African Traditional and Diasporic"],
          start: new Date(),
          state: "available",

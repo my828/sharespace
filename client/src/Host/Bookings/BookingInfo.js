@@ -96,13 +96,10 @@ export default withStyles(styles)(
             aria-labelledby="scroll-dialog-title"
           >
             <DialogContent>
-              
               <DialogContentText></DialogContentText>
               <h5 className={classes.title}>BOOKING INFORMATION</h5>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <div className={classes.body}>
-                  {booking.guestCount} Guests
-                </div>
+                <div className={classes.body}>{booking.guestCount} Guests</div>
                 <div className={classes.body}>
                   {moment(new Date(booking.start).toLocaleString()).format(
                     "MMMM DD"
@@ -142,14 +139,20 @@ export default withStyles(styles)(
               {/* <p className={classes.body} style={{fontWeight: 400}}>{booking.advocateInfo.name}</p> */}
               <div
                 style={{
-                  textAlign: "center",
+                  //   textAlign: "center",
                   display: "flex",
-                  justifyContent: "center",
+                  justifyContent: "space-between",
                   marginTop: "5px",
                 }}
               >
-                {/* <p style={{flexGrow: "1"}} className={`${classes.contact} ${classes.body}`}>{booking.advocatePhone}</p> */}
-                {/* <p style={{flexGrow: "1"}} className={`${classes.contact} ${classes.body}`}>{booking.advocateInfo.email}</p> */}
+                <div>
+                  <p>Name</p>
+                  <p className={classes.body}> {booking.advocateInfo.name}</p>{" "}
+                </div>
+                <div>
+                  <p>Email</p>
+                  <p className={classes.body}> {booking.advocateInfo.email}</p>
+                </div>
               </div>
             </DialogContent>
             <DialogActions
